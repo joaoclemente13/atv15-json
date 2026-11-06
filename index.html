@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atividade 15 — Fetch API e XHR</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: #172033;
+      background: #f3f6fb;
+    }
+
+    body {
+      box-sizing: border-box;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    main {
+      padding: 28px;
+      border: 1px solid #dce3ee;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 8px 26px rgb(23 32 51 / 7%);
+    }
+
+    h1 {
+      margin-top: 0;
+      color: #173b70;
+    }
+
+    .explanation {
+      line-height: 1.6;
+      color: #46536a;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    button {
+      padding: 11px 16px;
+      border: 0;
+      border-radius: 8px;
+      background: #1457a6;
+      color: #fff;
+      font: inherit;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    button:hover:not(:disabled) {
+      background: #0e427f;
+    }
+
+    button:focus-visible {
+      outline: 3px solid #f0ad32;
+      outline-offset: 3px;
+    }
+
+    button:disabled {
+      cursor: wait;
+      opacity: 0.65;
+    }
+
+    #demonstrar-erros {
+      background: #9c3d2c;
+    }
+
+    #demonstrar-erros:hover:not(:disabled) {
+      background: #7f2e21;
+    }
+
+    .panel {
+      margin-top: 20px;
+      padding: 18px;
+      border: 1px solid #dce3ee;
+      border-radius: 10px;
+      background: #f8faff;
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+    }
+
+    #status {
+      min-height: 1.5em;
+      font-weight: 650;
+    }
+
+    #status[data-kind="success"] {
+      color: #17683a;
+    }
+
+    #status[data-kind="error"] {
+      color: #a52b21;
+    }
+
+    #results {
+      display: grid;
+      gap: 12px;
+    }
+
+    .result {
+      padding: 12px;
+      border-left: 4px solid #8392aa;
+      border-radius: 4px;
+      background: #fff;
+    }
+
+    .result[data-kind="success"] {
+      border-left-color: #21834a;
+    }
+
+    .result[data-kind="error"] {
+      border-left-color: #c33c30;
+    }
+
+    .result p {
+      margin: 0 0 6px;
+    }
+
+    pre {
+      overflow-x: auto;
+      margin: 8px 0 0;
+      padding: 12px;
+      border-radius: 6px;
+      background: #eef2f8;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 16px 12px;
+      }
+
+      main {
+        padding: 20px 16px;
+      }
+
+      .actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Atividade 15 — Fetch API e XHR</h1>
+    <p class="explanation">
+      AJAX permite que uma página troque dados com um servidor sem recarregar
+      toda a página. Nesta atividade, XMLHttpRequest (XHR) e Fetch API consultam
+      uma API local e exibem os dados e o status HTTP recebidos.
+    </p>
+
+    <div class="actions" aria-label="Testes de requisição">
+      <button id="testar-xhr" type="button">Testar XMLHttpRequest</button>
+      <button id="testar-fetch" type="button">Testar Fetch API</button>
+      <button id="demonstrar-erros" type="button">Demonstrar Erros</button>
+    </div>
+
+    <section class="panel" aria-labelledby="status-titulo">
+      <h2 id="status-titulo">Status da requisição</h2>
+      <p id="status" role="status" aria-live="polite">Aguardando uma ação.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="dados-titulo">
+      <h2 id="dados-titulo">Dados recebidos e resultados</h2>
+      <div id="results" aria-live="polite">
+        <p>Nenhuma requisição realizada ainda.</p>
+      </div>
+    </section>
+  </main>
+  <script src="/script.js" defer></script>
+</body>
+</html>
